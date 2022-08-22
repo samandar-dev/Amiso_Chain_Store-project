@@ -56,15 +56,13 @@ function Quations({ finishBtn, setQuizCount, setCountActive }) {
 
   const finishBtnHandlar = () => {
     let arr = []
-    let itemm = {}
-
     api.map((item, inx) => {
       arr.push({
         id: inx + 1,
         correct: false,
         incorrectAnswers: "",
-        correctAnswer: itemm.correct_answer,
-        incorrectAnswersArr: itemm.incorrect_answers
+        correctAnswer: item.correct_answer,
+        incorrectAnswersArr: item.incorrect_answers
       })
     })
 
@@ -179,7 +177,6 @@ function Quations({ finishBtn, setQuizCount, setCountActive }) {
     setApi(arr)
   }, [sliderCount]);
 
-
   // --------------------------------------------------------------------------------------------
   // FETCH useEffect -----------------------
   // --------------------------------------------------------------------------------------------
@@ -188,7 +185,6 @@ function Quations({ finishBtn, setQuizCount, setCountActive }) {
     setQuizCount(JSON.parse(localStorage.getItem('quizCount')))
     fetchFunc()
   }, []);
-
 
   // ----------------------------------------------------------------------------------------------------------------------
   // ----------------------------------------------------------------------------------------------------------------------
@@ -302,7 +298,7 @@ function Quations({ finishBtn, setQuizCount, setCountActive }) {
                                     style={{
                                       transform: `translateY(-${item.randomNum === 1 ? 132 : item.randomNum === 2 ? 88 : item.randomNum === 3 ? 44 : 0}px)`
                                     }}>
-                                    <button>{item.correct_answer} ---------------</button>
+                                    <button>{item.correct_answer}</button>
                                   </li>
                                   :
                                   <li
@@ -314,62 +310,63 @@ function Quations({ finishBtn, setQuizCount, setCountActive }) {
                             </>
                             :
                             <>
-                              {resItem != null ?
-                                <>
-                                  {
-                                    resItem.incorrectAnswersArr.length > 2
-                                      ? resItem.incorrectAnswersArr.map((elem, ind) => (
-                                        ind + 1 === 1 ?
-                                          <li className={`quiz__desc-quiz-options-item ${resItem.incorrectAnswers === elem ? "incorrectAnswers" : ""}`}
-                                            key={ind + 1}
-                                            style={{
-                                              transform: `translateY(${resItem.randomNum === 1 ? 132 : 0}px)`
-                                            }}>
-                                            <button>{elem}</button>
-                                          </li>
-                                          :
-                                          ind + 1 === 2 ?
+                              {
+                                resItem != null ?
+                                  <>
+                                    {
+                                      resItem.incorrectAnswersArr.length > 2
+                                        ? resItem.incorrectAnswersArr.map((elem, ind) => (
+                                          ind + 1 === 1 ?
                                             <li className={`quiz__desc-quiz-options-item ${resItem.incorrectAnswers === elem ? "incorrectAnswers" : ""}`}
                                               key={ind + 1}
                                               style={{
-                                                transform: `translateY(${resItem.randomNum === 2 ? 88 : 0}px)`
+                                                transform: `translateY(${resItem.randomNum === 1 ? 132 : 0}px)`
                                               }}>
                                               <button>{elem}</button>
                                             </li>
                                             :
-                                            ind + 1 === 3 ?
+                                            ind + 1 === 2 ?
                                               <li className={`quiz__desc-quiz-options-item ${resItem.incorrectAnswers === elem ? "incorrectAnswers" : ""}`}
                                                 key={ind + 1}
                                                 style={{
-                                                  transform: `translateY(${resItem.randomNum === 3 ? 44 : 0}px)`
+                                                  transform: `translateY(${resItem.randomNum === 2 ? 88 : 0}px)`
                                                 }}>
                                                 <button>{elem}</button>
                                               </li>
-                                              : undefined
-                                      ))
+                                              :
+                                              ind + 1 === 3 ?
+                                                <li className={`quiz__desc-quiz-options-item ${resItem.incorrectAnswers === elem ? "incorrectAnswers" : ""}`}
+                                                  key={ind + 1}
+                                                  style={{
+                                                    transform: `translateY(${resItem.randomNum === 3 ? 44 : 0}px)`
+                                                  }}>
+                                                  <button>{elem}</button>
+                                                </li>
+                                                : undefined
+                                        ))
 
-                                      : resItem.incorrectAnswersArr.map((elem, ind) => (
-                                        <li className={`quiz__desc-quiz-options-item ${resItem.incorrectAnswers === elem ? "incorrectAnswers" : ""}`}
-                                          key={ind + 1}>
-                                          <button>{elem}</button>
+                                        : resItem.incorrectAnswersArr.map((elem, ind) => (
+                                          <li className={`quiz__desc-quiz-options-item ${resItem.incorrectAnswers === elem ? "incorrectAnswers" : ""}`}
+                                            key={ind + 1}>
+                                            <button>{elem}</button>
+                                          </li>
+                                        ))
+                                    }
+
+                                    {
+                                      resItem.incorrectAnswersArr.length !== 1 ?
+                                        <li className="quiz__desc-quiz-options-item correctAnswerActive"
+                                          style={{
+                                            transform: `translateY(-${resItem.randomNum === 1 ? 132 : resItem.randomNum === 2 ? 88 : resItem.randomNum === 3 ? 44 : 0}px)`
+                                          }}>
+                                          <button>{correctAnswerActive}</button>
                                         </li>
-                                      ))
-                                  }
-
-                                  {
-                                    resItem.incorrectAnswersArr.length !== 1 ?
-                                      <li className="quiz__desc-quiz-options-item correctAnswerActive"
-                                        style={{
-                                          transform: `translateY(-${resItem.randomNum === 1 ? 132 : resItem.randomNum === 2 ? 88 : resItem.randomNum === 3 ? 44 : 0}px)`
-                                        }}>
-                                        <button>{correctAnswerActive}</button>
-                                      </li>
-                                      : <li className="quiz__desc-quiz-options-item correctAnswerActive">
-                                        <button>{correctAnswerActive}</button>
-                                      </li>
-                                  }
-                                </>
-                                : undefined
+                                        : <li className="quiz__desc-quiz-options-item correctAnswerActive">
+                                          <button>{correctAnswerActive}</button>
+                                        </li>
+                                    }
+                                  </>
+                                  : undefined
                               }
                             </>
                         }
