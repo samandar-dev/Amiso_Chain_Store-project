@@ -134,9 +134,13 @@ function Quations({ finishBtn, setQuizCount, setCountActive }) {
 
   useEffect(() => {
     resultArr.map(item => item.correct ? setResultCount(resultCount + 1) : setResultCount(resultCount))
-    resultArr.length === JSON.parse(localStorage.getItem('quizCount'))
-      ? (setResultPercentage(Math.round(resultCount * 100 / resultArr.length)), setModal(true))
-      : setModal(false)
+    if (resultArr.length === JSON.parse(localStorage.getItem('quizCount'))) {
+      setResultPercentage(Math.round(resultCount * 100 / resultArr.length))
+      setModal(true)
+    }
+    else {
+      setModal(false)
+    }
   }, [resultArr.length]);
 
   // --------------------------------------------------------------------------------------------
