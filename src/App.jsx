@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
-import NotFound from './Companents/NotFound'
-import Quation from './Companents/Quation'
-import Home from './Companents/Home'
+import NotFound from './companents/NotFound'
+import Quation from './companents/Quation'
+import Home from './companents/Home'
 import { useState } from 'react'
 import './App.scss'
 
