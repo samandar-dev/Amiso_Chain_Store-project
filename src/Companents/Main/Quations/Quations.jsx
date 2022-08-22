@@ -11,15 +11,14 @@ function Quations({ finishBtn, setQuizCount, setCountActive }) {
   const [resultArr, setResultArr] = useState([])
   const [answerItem, setAnswerItem] = useState("")
   const [sliderCount, setSliderCount] = useState(1)
+  const [resultCount, setResultCount] = useState(0)
   const [correctAnswer, setCorrectAnswer] = useState("")
   const [answerItemTwo, setAnswerItemTwo] = useState("")
+  const [resultPercentage, setResultPercentage] = useState(0)
   const [resultTrueFalse, setResultTrueFalse] = useState(false)
   const [correctAnswerActive, setCorrectAnswerActive] = useState("")
   const [incorrectAnswersArr, setIncorrectAnswersArr] = useState([])
   const loadingArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-
-  const [resultCount, setResultCount] = useState(0)
-  const [resultPercentage, setResultPercentage] = useState(0)
 
 
   // --------------------------------------------------------------------------------------------
