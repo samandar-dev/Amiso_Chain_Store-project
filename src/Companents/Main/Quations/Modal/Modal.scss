@@ -1,0 +1,98 @@
+.modal {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  transition: all 0.7s ease;
+
+  &__backdrop {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(51, 51, 51, 0.603);
+    z-index: 400;
+  }
+
+  &__inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 300px;
+    max-width: 600px;
+    padding: 16px 24px;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 500;
+  }
+  &__title {
+    color: #333;
+    font-size: 25px;
+    line-height: 25px;
+    margin-bottom: 24px;
+  }
+  &__result {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 10px;
+
+    p {
+      font-size: 42px;
+      line-height: 45px;
+      color: #0000008a;
+    }
+    span {
+      font-size: 30px;
+      line-height: 45px;
+      color: #0000008a;
+    }
+  }
+  &__btns {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    a {
+      display: inline-block;
+      text-decoration: none;
+      width: 48%;
+    }
+  }
+  &__btn-ok,
+  &__btn-home {
+    width: 48%;
+    font-size: 17px;
+    line-height: 30px;
+    padding: 5px 15px;
+    border-radius: 5px;
+    background: transparent;
+    border: 1px solid #f50057;
+    transition: all 0.2s ease;
+  }
+  &__btn-ok {
+    border: 1px solid #3f51b5;
+    &:hover {
+      color: #fff;
+      background: #3f51b5;
+    }
+  }
+  &__btn-home {
+    width: 100%;
+    border: 1px solid #f50057;
+    &:hover {
+      color: #fff;
+      background: #f50057;
+    }
+  }
+}

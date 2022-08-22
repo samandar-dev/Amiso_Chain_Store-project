@@ -1,0 +1,33 @@
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  min-height: 100vh;
+  overflow-x: hidden;
+  flex-direction: column;
+  font-family: sans-serif;
+}
+button {
+  border: none;
+  cursor: pointer;
+}
+.container {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+.btn {
+  position: relative;
+  color: #fff;
+  font-size: 17px;
+  padding: 6px 16px;
+  line-height: 38px;
+  border-radius: 5px;
+  transition: all 0.2s ease;
+}
